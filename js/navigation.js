@@ -11,7 +11,6 @@ var wallTileMenu = null;
 var floorTileMenu = null;
 
 var activeMenu = null;
-
 var ui_text_names =
 {
   "English": {
@@ -19,35 +18,60 @@ var ui_text_names =
     "wallGroutText": "Wall Grouts",
     "wallTileText": "Wall Tiles",
     "floorTileText": "Floor Tiles",
-    "roomsText": "Rooms"
+    "roomsText": "Rooms",
+    "Kitchen01": "Kitchen",
+    "Kitchen02": "Kitchen",
+    "Living01": "Living",
+    "Exterior01": "Outdoor",
+    "Bath01": "Bath"
   },
   "Russian": {
     "floorGroutText": "Затирка для пола",
     "wallGroutText": "Затирка для стен",
     "wallTileText": "Плиточный клей для стен",
     "floorTileText": "Плиточный клей для пола",
-    "roomsText": "Комнаты"
+    "roomsText": "Rooms",
+    "Kitchen01": "Кухня",
+    "Kitchen02": "Кухня",
+    "Living01": "гостинная",
+    "Exterior01": "экстерьер",
+    "Bath01": "ванная комната"
   },
   "German": {
     "floorGroutText": "Fugenfarbe/Boden",
     "wallGroutText": "Fugenfarbe/Wand",
     "floorTileText": "Fliesen/Boden",
     "wallTileText": "Fliesen/Wand",
-    "roomsText": "Raum"
+    "roomsText": "Raum",
+    "Kitchen01": "Küche",
+    "Kitchen02": "Küche",
+    "Living01": "Wohnzimmer",
+    "Exterior01": "Draussen",
+    "Bath01": "Badezimmer"
   },
   "Estonian": {
     "floorGroutText": "Põranda vuuk",
     "wallGroutText": "Seina vuuk",
     "floorTileText": "Põranda plaat",
     "wallTileText": "Seina plaat",
-    "roomsText": "Toad"
+    "roomsText": "Toad",
+    "Kitchen01": "Köök",
+    "Kitchen02": "Köök",
+    "Living01": "elutuba",
+    "Exterior01": "Õues",
+    "Bath01": "Vannituba"
   },
   "Lithuanian": {
     "floorGroutText": "Glaistas grindims",
     "wallGroutText": "Glaistas sienoms",
     "floorTileText": "Grindų plytelės",
     "wallTileText": "Sienų plytelės",
-    "roomsText": "Patalpos"
+    "roomsText": "Patalpos",
+    "Kitchen01": "Virtuvė",
+    "Kitchen02": "Virtuvė",
+    "Living01": "Svetainė",
+    "Exterior01": "Išorė",
+    "Bath01": "Vonia"
   }
 }
 
@@ -293,8 +317,15 @@ function setMainMenuText(value)
     changeWallTileMenuHeaderName(value["wallTileText"]);
 }
 
-function changeUIText(currentLanguage)
+function changeUIText()
 {
-    console.log(ui_text_names[currentLanguage]);
-    setMainMenuText(ui_text_names[currentLanguage]);
+    console.log(ui_text_names[currentSelectedLanguage]);
+    setMainMenuText(ui_text_names[currentSelectedLanguage]);
+    changeRoomMenuHeaderName(roomName);
+}
+
+function getRoomNameBasisLanguage(roomName)
+{
+    var name = ui_text_names[currentSelectedLanguage][roomName];
+    return name;
 }

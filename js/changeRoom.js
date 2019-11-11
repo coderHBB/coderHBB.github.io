@@ -36,6 +36,8 @@ function changeRoom(roomIndex, currentButton)
             break;
     }
 
+    console.log(roomName);
+
     //base layer
     var canvas = document.getElementById("baseLayer");
     var ctx = canvas.getContext("2d");
@@ -228,8 +230,10 @@ function changeRoom(roomIndex, currentButton)
 }
 
 function changeRoomMenuHeaderName(headerName) {
+
     var header = document.getElementById("room-menu-header");
     if (header) {
-        header.children[0].innerHTML = headerName;
+        var name = getRoomNameBasisLanguage(headerName);
+        header.children[0].innerHTML = name;
     }
 }

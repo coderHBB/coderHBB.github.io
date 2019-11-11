@@ -642,6 +642,7 @@ var wallTileMenu = null;
 var floorTileMenu = null;
 var wallGroutMenu = null;
 var floorGroutMenu = null;
+var currentSelectedLanguage = "English";
 
 function initializeApp() {
 //    loadFloorGrouts("Kitchen");
@@ -977,6 +978,6 @@ function changeLanguage()
 {
     loadFloorGrouts(roomName);
     loadWallGrouts(roomName);
-    var currentSelectedLanguage = document.getElementById("language-dropdown").value;
-    changeUIText(currentSelectedLanguage);
+    currentSelectedLanguage = document.getElementById("language-dropdown").value;
+    changeUIText();
 }

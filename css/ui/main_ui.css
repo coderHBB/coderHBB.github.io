@@ -140,23 +140,46 @@ html {
   }
 }
 
+@media only screen and (max-width: 640px) {
 .menu-buttons{
-    position: relative;
-    display: inline-block;
-    width: 80px;
-    height: 80px;
-}
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 60px;
+    }
 
 .image-text{
     display: inline-block;
     position: absolute;
-    width: 80px;
-    height: 30px;
+    width: 60px;
+    height: 22.5px;
     bottom: 0px;
     text-align: center;
     color: white;
     word-wrap: break-word;
-    font-size: 11px;
+    font-size: 8px;
+}
+}
+
+@media only screen and (min-width: 640px) {
+.menu-buttons{
+        position: relative;
+        display: inline-block;
+        width: 80px;
+        height: 80px;
+    }
+
+.image-text{
+        display: inline-block;
+        position: absolute;
+        width: 80px;
+        height: 30px;
+        bottom: 0px;
+        text-align: center;
+        color: white;
+        word-wrap: break-word;
+        font-size: 11px;
+    }
 }
 
 .sub-menu {
@@ -176,6 +199,29 @@ html {
     width: 100%;
     overflow-y: auto;
   }
+
+  .menu-header {
+  position: relative;
+  width: 200px;
+  height: 50px;
+  left: 10px;
+  top: 0px;
+  display: block;
+}
+
+  .menu-header nav {
+    position: absolute;
+    height: 50px;
+    margin: 0;
+    padding: 15px 0px;
+    font-size: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans';
+    color: white;
+    font-weight: 100;
+    vertical-align: middle;
+    word-wrap: break-word;
+    display: inline;
+  }
 }
 
 @media only screen and (min-width: 640px) {
@@ -188,6 +234,29 @@ html {
     overflow-x: auto;
     overflow-y: hidden;
   }
+
+.menu-header {
+      position: absolute;
+      width: 200px;
+      height: 50px;
+      left: 10px;
+      top: 0px;
+      display: block;
+    }
+
+.menu-header nav {
+      position: absolute;
+      height: 50px;
+      margin: 0;
+      padding: 15px 0px;
+      font-size: 20px;
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans';
+      color: white;
+      font-weight: 100;
+      vertical-align: middle;
+      word-wrap: break-word;
+      display: inline;
+    }
 }
 
 .sub-menu a {
@@ -205,29 +274,6 @@ html {
   right: 0;
   font-size: 36px;
   margin-left: 50px;
-}
-
-.menu-header {
-  position: absolute;
-  width: 200px;
-  height: 50px;
-  left: 10px;
-  top: 0px;
-  display: block;
-}
-
-.menu-header nav {
-  position: absolute;
-  height: 50px;
-  margin: 0;
-  padding: 15px 0px;
-  font-size: 20px;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans';
-  color: white;
-  font-weight: 100;
-  vertical-align: middle;
-  word-wrap: break-word;
-  display: inline;
 }
 
 @media only screen and (max-width: 640px) {
@@ -350,21 +396,25 @@ html {
   background-color: white;
 } */
 
-
+@media only screen and (min-width: 640px) {
 .floor-grout-btn {
-  border-radius: 0;
-  width: 70px;
-  height: 70px;
-  /* margin-right: 5px;
-  margin-bottom: 5px; */
-  text-indent: -999999px;
-  outline: none;
-  border: 1px solid white;
+    border-radius: 0;
+    width: 70px;
+    height: 70px;
+    /* margin-right: 5px;
+    margin-bottom: 5px; */
+    text-indent: -999999px;
+    outline: none;
+    border: 1px solid white;
+    }
 }
 
 @media only screen and (max-width: 640px) {
   .floor-grout-btn {
     border-radius: 0;
+
+    width: 60px;
+    height: 60px;
     margin: 10px;
     text-indent: -999999px;
     flex: 0 0 70px;
@@ -444,6 +494,8 @@ html {
 @media only screen and (max-width: 640px) {
   .btn-group {
     display: flex;
+    padding-top: 25px;
+    height: 60px;
     /* overflow-y: scroll; */
   }
 }
