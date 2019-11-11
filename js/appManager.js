@@ -656,7 +656,7 @@ function loadFloorGrouts(roomName)
 {
     if(floorGroutMenu == null)
     {
-        floorGroutMenu = document.getElementById('floor-btn-group');
+        var floorGroutMenu = document.getElementById('floor-btn-group');
     }
 
     while (floorGroutMenu.firstChild)
@@ -675,6 +675,7 @@ function loadFloorGrouts(roomName)
             btn.classList.add('btn')
             btn.classList.add('floor-grout-btn')
             btn.style.backgroundColor = grouts[i].value;
+            btn.setAttribute("colorName", currentHeaderName);
 
             btn.innerHTML = currentHeaderName; // Insert text
             if (i == 0)
@@ -692,8 +693,9 @@ function loadFloorGrouts(roomName)
 
             btn.onclick = function ()
             {
+                console.log("debugging : "+this.innerHTML);
                 changeFloorGrout(this);
-                changeFloorMenuHeaderName(this.innerHTML);
+                changeFloorMenuHeaderName(this.getAttribute("colorName"));
             }
 
             floorGroutMenu.appendChild(btn);
@@ -705,7 +707,7 @@ function loadWallGrouts(roomName)
 {
     if(wallGroutMenu == null)
     {
-        wallGroutMenu = document.getElementById('wall-grout-btn-group');
+        var wallGroutMenu = document.getElementById('wall-grout-btn-group');
     }
 
     while (wallGroutMenu.firstChild)
@@ -851,6 +853,7 @@ function changeFloorAndWallGroutImageColor(groutCanvas, currentBtn)
 function changeFloorMenuHeaderName(headerName) {
     var header = document.getElementById("floor-grout-menu-header");
     if (header) {
+        console.log(headerName);
         headerName = headerName.replace('CE40', '');
         headerName = headerName.replace('CE79', '');
         headerName = headerName.replace('CE89', '');

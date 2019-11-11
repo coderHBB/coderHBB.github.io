@@ -30,7 +30,7 @@ var ui_text_names =
     "wallGroutText": "Затирка для стен",
     "wallTileText": "Плиточный клей для стен",
     "floorTileText": "Плиточный клей для пола",
-    "roomsText": "Rooms",
+    "roomsText": "Комнаты",
     "Kitchen01": "Кухня",
     "Kitchen02": "Кухня",
     "Living01": "гостинная",
