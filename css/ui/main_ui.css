@@ -140,6 +140,25 @@ html {
   }
 }
 
+.menu-buttons{
+    position: relative;
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+}
+
+.image-text{
+    display: inline-block;
+    position: absolute;
+    width: 80px;
+    height: 30px;
+    bottom: 0px;
+    text-align: center;
+    color: white;
+    word-wrap: break-word;
+    font-size: 11px;
+}
+
 .sub-menu {
   position: absolute;
   background-color: #111;
@@ -193,18 +212,22 @@ html {
   width: 200px;
   height: 50px;
   left: 10px;
-  top: 0;
+  top: 0px;
   display: block;
 }
 
-.menu-header h3 {
+.menu-header nav {
   position: absolute;
+  height: 50px;
   margin: 0;
   padding: 15px 0px;
   font-size: 20px;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans';
   color: white;
   font-weight: 100;
+  vertical-align: middle;
+  word-wrap: break-word;
+  display: inline;
 }
 
 @media only screen and (max-width: 640px) {
@@ -212,7 +235,6 @@ html {
     color: transparent;
   }
 }
-
 
 .close-button {
   position: absolute;
@@ -431,6 +453,7 @@ html {
     display: grid;
     grid-template-columns: auto auto auto;
     grid-row-gap: 5px;
+    padding-top: 25px;
     padding-left: 10px;
     /* padding-bottom: 10px; */
     overflow-y: auto;

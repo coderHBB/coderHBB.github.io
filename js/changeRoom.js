@@ -1,4 +1,9 @@
 var roomName = "";
+var canvas = null;
+var floorTileCanvas = null;
+var wallTileCanvas = null;
+var floorGroutCanvas = null;
+var wallGroutCanvas = null;
 
 function changeRoom(roomIndex, currentButton) 
 {
@@ -30,11 +35,7 @@ function changeRoom(roomIndex, currentButton)
             $(currentButton).addClass('active');
             break;
     }
-    changeRoomMenuHeaderName(roomName);
-    loadFloorGrouts(roomName);
-    loadWallGrouts(roomName);
-    loadWallTiles(roomName);
-    loadFloorTiles(roomName);
+
     //base layer
     var canvas = document.getElementById("baseLayer");
     var ctx = canvas.getContext("2d");
@@ -87,8 +88,11 @@ function changeRoom(roomIndex, currentButton)
 //    magnify('baseLayer', 2);
 
     //floor grout layer
-    var floorGroutCanvas = document.getElementById("floorGroutLayer");
-    var floorGroutCanvasCtx = floorGroutCanvas.getContext("2d");
+    if(window.floorGroutCanvas == null)
+    {
+        window.floorGroutCanvas = document.getElementById("floorGroutLayer");
+    }
+    var floorGroutCanvasCtx = window.floorGroutCanvas.getContext("2d");
     var floorGroutImage = new Image();
     floorGroutCanvasCtx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -105,6 +109,8 @@ function changeRoom(roomIndex, currentButton)
             floorGroutCanvasCtx.canvas.height = floorGroutImage.height;
         }
         floorGroutCanvasCtx.drawImage(floorGroutImage, 0, 0);
+
+        loadFloorGrouts(roomName);
     }
 
     if (window.innerWidth >= 640)
@@ -119,8 +125,12 @@ function changeRoom(roomIndex, currentButton)
 //    magnify('baseLayer', 2);
 
     //floor tile layer
-    var floorTileCanvas = document.getElementById("floorTileLayer");
-    var floorTileCanvasCtx = floorTileCanvas.getContext("2d");
+    if(window.floorTileCanvas == null)
+    {
+        window.floorTileCanvas = document.getElementById("floorTileLayer");
+    }
+
+    var floorTileCanvasCtx = window.floorTileCanvas.getContext("2d");
     var floorTileImage = new Image();
     floorTileCanvasCtx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -148,8 +158,11 @@ function changeRoom(roomIndex, currentButton)
     }
 
     //wall grout layer
-    var wallGroutCanvas = document.getElementById("wallGroutLayer");
-    var wallGroutCanvasCtx = wallGroutCanvas.getContext("2d");
+    if(window.wallGroutCanvas == null)
+    {
+        window.wallGroutCanvas = document.getElementById("wallGroutLayer");
+    }
+    var wallGroutCanvasCtx = window.wallGroutCanvas.getContext("2d");
     var wallGroutImage = new Image();
     wallGroutCanvasCtx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -163,6 +176,8 @@ function changeRoom(roomIndex, currentButton)
             wallGroutCanvasCtx.canvas.height = wallGroutImage.height;
         }
         wallGroutCanvasCtx.drawImage(wallGroutImage, 0, 0);
+
+        loadWallGrouts(roomName);
     }
 
     if (window.innerWidth >= 640)
@@ -175,8 +190,12 @@ function changeRoom(roomIndex, currentButton)
     }
 
     //wall tile layer
-    var wallTileCanvas = document.getElementById("wallTileLayer");
-    var wallTileCanvasCtx = wallTileCanvas.getContext("2d");
+    if(window.wallTileCanvas == null)
+    {
+        window.wallTileCanvas = document.getElementById("wallTileLayer");
+    }
+
+    var wallTileCanvasCtx = window.wallTileCanvas.getContext("2d");
     var wallTileImage = new Image();
     wallTileCanvasCtx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -200,6 +219,12 @@ function changeRoom(roomIndex, currentButton)
     {
         wallTileImage.src = "src/img/" + roomName + "/WallTile0_P.png"
     }
+
+    changeRoomMenuHeaderName(roomName);
+//    loadFloorGrouts(roomName);
+//    loadWallGrouts(roomName);
+    loadWallTiles(roomName);
+    loadFloorTiles(roomName);
 }
 
 function changeRoomMenuHeaderName(headerName) {

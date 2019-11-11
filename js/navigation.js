@@ -12,6 +12,45 @@ var floorTileMenu = null;
 
 var activeMenu = null;
 
+var ui_text_names =
+{
+  "English": {
+    "floorGroutText": "Floor Grouts",
+    "wallGroutText": "Wall Grouts",
+    "wallTileText": "Wall Tiles",
+    "floorTileText": "Floor Tiles",
+    "roomsText": "Rooms"
+  },
+  "Russian": {
+    "floorGroutText": "Затирка для пола",
+    "wallGroutText": "Затирка для стен",
+    "wallTileText": "Плиточный клей для стен",
+    "floorTileText": "Плиточный клей для пола",
+    "roomsText": "Комнаты"
+  },
+  "German": {
+    "floorGroutText": "Fugenfarbe/Boden",
+    "wallGroutText": "Fugenfarbe/Wand",
+    "floorTileText": "Fliesen/Boden",
+    "wallTileText": "Fliesen/Wand",
+    "roomsText": "Raum"
+  },
+  "Estonian": {
+    "floorGroutText": "Põranda vuuk",
+    "wallGroutText": "Seina vuuk",
+    "floorTileText": "Põranda plaat",
+    "wallTileText": "Seina plaat",
+    "roomsText": "Toad"
+  },
+  "Lithuanian": {
+    "floorGroutText": "Glaistas grindims",
+    "wallGroutText": "Glaistas sienoms",
+    "floorTileText": "Grindų plytelės",
+    "wallTileText": "Sienų plytelės",
+    "roomsText": "Patalpos"
+  }
+}
+
 function initializeMenu() {
     groutMenu = document.getElementById('floor-grout-menu');
     wallGroutMenu = document.getElementById('wall-grout-menu');
@@ -31,8 +70,8 @@ function toggleMenu(menuName) {
 }
 
 function toggleGroutMenu(inputElement, menuName) {
-
     groutMenu = document.getElementById('floor-grout-menu');
+    var spanElement = document.getElementById("floorGroutText");
     if (groutMenu) {
         if (!isGroutMenuOpen) {
             if (activeMenu != null && activeMenu != groutMenu) {
@@ -42,11 +81,13 @@ function toggleGroutMenu(inputElement, menuName) {
             isGroutMenuOpen = true;
             activeMenu = groutMenu;
             openNav(menuName);
+            setFontColor(spanElement, "black");
         } else {
             inputElement.src = "src/img/ui/floor_grout_default.png";
             closeNav(menuName);
             isGroutMenuOpen = false;
             activeMenu = null;
+            setFontColor(spanElement, "white");
         }
     }
 }
@@ -54,6 +95,7 @@ function toggleGroutMenu(inputElement, menuName) {
 function toggleWallGroutMenu(inputElement, menuName) {
 
     wallGroutMenu = document.getElementById('wall-grout-menu');
+    var spanElement = document.getElementById("wallGroutText");
     if (wallGroutMenu) {
         if (!isWallGroutMenuOpen) {
             if (activeMenu != null && activeMenu != wallGroutMenu) {
@@ -63,11 +105,13 @@ function toggleWallGroutMenu(inputElement, menuName) {
             isWallGroutMenuOpen = true;
             activeMenu = wallGroutMenu;
             openNav(menuName);
+            setFontColor(spanElement, "black");
         } else {
             inputElement.src = "src/img/ui/wall_grout_default.png";
             closeNav(menuName);
             isWallGroutMenuOpen = false;
             activeMenu = null;
+            setFontColor(spanElement, "white");
         }
     }
 }
@@ -75,6 +119,7 @@ function toggleWallGroutMenu(inputElement, menuName) {
 function toggleWallTileMenu(inputElement, menuName) {
 
     wallTileMenu = document.getElementById('wall-tile-menu');
+    var spanElement = document.getElementById("wallTileText");
     if (wallTileMenu) {
         if (!isWallTileMenuOpen) {
             if (activeMenu != null && activeMenu != wallTileMenu) {
@@ -84,11 +129,13 @@ function toggleWallTileMenu(inputElement, menuName) {
             isWallTileMenuOpen = true;
             activeMenu = wallTileMenu;
             openNav(menuName);
+            setFontColor(spanElement, "black");
         } else {
             inputElement.src = "src/img/ui/wall_tile_default.png";
             closeNav(menuName);
             isWallTileMenuOpen = false;
             activeMenu = null;
+            setFontColor(spanElement, "white");
         }
     }
 }
@@ -96,6 +143,7 @@ function toggleWallTileMenu(inputElement, menuName) {
 function toggleFloorTileMenu(inputElement, menuName) {
 
     floorTileMenu = document.getElementById('floor-tile-menu');
+    var spanElement = document.getElementById("floorTileText");
     if (floorTileMenu) {
         if (!isFloorTileMenuOpen) {
             if (activeMenu != null && activeMenu != floorTileMenu) {
@@ -105,17 +153,20 @@ function toggleFloorTileMenu(inputElement, menuName) {
             isFloorTileMenuOpen = true;
             activeMenu = floorTileMenu;
             openNav(menuName);
+            setFontColor(spanElement, "black");
         } else {
             inputElement.src = "src/img/ui/floor_tile_default.png";
             closeNav(menuName);
             isFloorTileMenuOpen = false;
             activeMenu = null;
+            setFontColor(spanElement, "white");
         }
     }
 }
 
 function toggleRoomMenu(inputElement, menuName) {
     roomMenu = document.getElementById('rooms');
+    var spanElement = document.getElementById("roomsText");
     if (roomMenu) {
         if (!isRoomMenuOpen) {
             if (activeMenu != null && activeMenu != roomMenu) {
@@ -125,11 +176,13 @@ function toggleRoomMenu(inputElement, menuName) {
             isRoomMenuOpen = true;
             activeMenu = roomMenu;
             openNav(menuName);
+            setFontColor(spanElement, "black");
         } else {
             inputElement.src = "src/img/ui/rooms_default.png";
             closeNav(menuName);
             isRoomMenuOpen = false;
             activeMenu = null;
+            setFontColor(spanElement, "white");
         }
     }
 }
@@ -158,6 +211,7 @@ function closeNav(menuName) {
 function hidePreviousActiveMenu() {
     if (activeMenu != null) {
         console.log(activeMenu);
+        resetActiveFontColor(activeMenu.id);
         if (window.innerWidth >= 640) {
             activeMenu.style.width = "0";
         } else {
@@ -187,4 +241,60 @@ function closeActiveNavigationMenu() {
         console.log("Closing active menu");
 
     }
+}
+
+function setFontColor(spanElement, color)
+{
+    console.log(spanElement);
+    spanElement.style.color = color;
+}
+
+function resetActiveFontColor(activeMenuId)
+{
+    switch(activeMenuId)
+    {
+        case "floor-grout-menu":
+            var spanElement = document.getElementById("floorGroutText");
+            setFontColor(spanElement, "white");
+            break;
+        case "wall-grout-menu":
+            var spanElement = document.getElementById("wallGroutText");
+            setFontColor(spanElement, "white");
+            break;
+        case "wall-tile-menu":
+            var spanElement = document.getElementById("wallTileText");
+            setFontColor(spanElement, "white");
+            break;
+        case "floor-tile-menu":
+            var spanElement = document.getElementById("floorTileText");
+            setFontColor(spanElement, "white");
+            break;
+        case "rooms":
+            var spanElement = document.getElementById("roomsText");
+            setFontColor(spanElement, "white");
+            break;
+    }
+}
+
+function setMainMenuText(value)
+{
+    var spanElement = document.getElementById("floorGroutText");
+    spanElement.innerHTML = value["floorGroutText"];
+    spanElement = document.getElementById("wallGroutText");
+    spanElement.innerHTML = value["wallGroutText"];
+    spanElement = document.getElementById("wallTileText");
+    spanElement.innerHTML = value["wallTileText"];
+    spanElement = document.getElementById("floorTileText");
+    spanElement.innerHTML = value["floorTileText"];
+    spanElement = document.getElementById("roomsText");
+    spanElement.innerHTML = value["roomsText"];
+
+    changeFloorTileMenuHeaderName(value["floorTileText"]);
+    changeWallTileMenuHeaderName(value["wallTileText"]);
+}
+
+function changeUIText(currentLanguage)
+{
+    console.log(ui_text_names[currentLanguage]);
+    setMainMenuText(ui_text_names[currentLanguage]);
 }
