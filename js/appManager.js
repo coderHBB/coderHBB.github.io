@@ -196,8 +196,8 @@ function changeFloorAndWallGroutImageColor(groutCanvas, currentBtn)
         imgData.data[i+3] = 255;
       }
     }
-
     groutCanvasCtx.putImageData(imgData, 0, 0);
+    invokeMagnify();
 }
 
 function changeFloorMenuHeaderName(headerName) {
@@ -295,6 +295,7 @@ function changeFloorAndWallTileImage(canvasCtx, currentButton)
         canvasCtx.canvas.height = tileImage.height;
       }
       canvasCtx.drawImage(tileImage, 0, 0);
+      invokeMagnify();
     }
     if (window.innerWidth >= 640) {
       tileImage.src = "src/img/" + room + "/" + tileName + "_L.png"
